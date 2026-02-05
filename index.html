@@ -12,49 +12,32 @@
         theme: {
           extend: {
             colors: {
-              ink: {
-                50: '#f7f7f8',
-                100: '#ececee',
-                200: '#d6d6db',
-                300: '#b3b3bc',
-                400: '#8c8c99',
-                500: '#6b6b78',
-                600: '#4f4f5a',
-                700: '#3a3a44',
-                800: '#25252d',
-                900: '#131318'
+              vaultbg: '#F7F8FA',
+              surface: '#FFFFFF',
+              border: '#E6E8EC',
+              text: '#111827',
+              text2: '#374151',
+              text3: '#6B7280',
+              primary: {
+                100: '#E9EEFF',
+                500: '#4F7CFF',
+                600: '#3B4BFF'
               },
-              brand: {
-                50: '#eef7ff',
-                100: '#d9eeff',
-                200: '#b5ddff',
-                300: '#86c5ff',
-                400: '#57a8ff',
-                500: '#2e8bff',
-                600: '#1e6fe6',
-                700: '#1858b8',
-                800: '#12408a',
-                900: '#0c2a5c'
+              violet: {
+                100: '#F3E8FF',
+                600: '#7C3AED'
               },
-              mint: {
-                50: '#ecfff7',
-                100: '#d6ffef',
-                200: '#adffe0',
-                300: '#74ffd0',
-                400: '#2ff2b7',
-                500: '#12d49b',
-                600: '#0fae7f',
-                700: '#0c8a64',
-                800: '#086147',
-                900: '#043b2b'
+              success: {
+                100: '#DCFCE7',
+                600: '#22C55E'
               }
             },
             fontFamily: {
               sans: ["ui-sans-serif", "system-ui", "-apple-system", "SF Pro Display", "SF Pro Text", "Inter", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"]
             },
             boxShadow: {
-              soft: '0 10px 30px rgba(0,0,0,.12)',
-              glow: '0 0 0 1px rgba(46,139,255,.20), 0 25px 60px rgba(46,139,255,.18)'
+              soft: '0 10px 30px rgba(17,24,39,.07)',
+              glow: '0 0 0 1px rgba(59,75,255,.20), 0 16px 40px rgba(59,75,255,.14)'
             }
           }
         }
@@ -66,45 +49,45 @@
   <link rel="stylesheet" href="/css/styles.css" />
   <script src="/js/main.js" defer></script>
 </head>
-<body data-page="home" class="bg-ink-900 text-ink-50 selection:bg-brand-500/30 selection:text-white">
+<body data-page="home" class="bg-vaultbg text-text selection:bg-primary-100 selection:text-text">
   <div class="fixed inset-0 -z-10 noise"></div>
-  <div class="fixed inset-0 -z-10 gridlines opacity-40"></div>
+  <div class="fixed inset-0 -z-10 gridlines opacity-70"></div>
 
   <div id="site-header"></div>
 
   <main class="mx-auto max-w-6xl px-6 pt-14 pb-10">
     <section class="grid lg:grid-cols-2 gap-10 items-center">
       <div>
-        <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs stroke bg-white/5 text-ink-200">
-          <span class="h-1.5 w-1.5 rounded-full bg-mint-400"></span>
+        <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs stroke bg-surface text-text2">
+          <span class="h-1.5 w-1.5 rounded-full bg-success-600"></span>
           MVP listo para pruebas • API responsiva • Procesamiento en background
         </div>
-        <h1 class="mt-6 text-4xl sm:text-5xl font-semibold tracking-tight">
+        <h1 class="mt-6 text-4xl sm:text-5xl font-semibold tracking-tight text-text">
           Guarda cualquier cosa.
-          <span class="text-ink-200">Convierte el caos en conocimiento.</span>
+          <span class="text-text2">Convierte el caos en conocimiento.</span>
         </h1>
-        <p class="mt-5 text-lg text-ink-200 leading-relaxed">
+        <p class="mt-5 text-lg text-text2 leading-relaxed">
           Vault captura links, PDFs, imágenes, audios y notas. Luego transcribe, resume y organiza.
-          Tu contenido vive en la nube, pero también se siente <span class="text-white">instantáneo</span> en tus dispositivos.
+          Tu contenido vive en la nube, pero también se siente <span class="text-text font-medium">instantáneo</span> en tus dispositivos.
         </p>
 
         <div class="mt-8 flex flex-col sm:flex-row gap-3">
-          <a href="#waitlist" class="inline-flex justify-center items-center rounded-2xl px-5 py-3 font-semibold bg-brand-500 hover:bg-brand-400 shadow-glow">Pedir acceso</a>
-          <a href="#features" class="inline-flex justify-center items-center rounded-2xl px-5 py-3 stroke bg-white/5 hover:bg-white/10 text-ink-100">Ver features</a>
+          <a href="#waitlist" class="inline-flex justify-center items-center rounded-2xl px-5 py-3 font-semibold bg-primary-600 hover:bg-primary-500 text-white shadow-glow">Pedir acceso</a>
+          <a href="#features" class="inline-flex justify-center items-center rounded-2xl px-5 py-3 stroke bg-surface hover:bg-primary-100 text-text">Ver features</a>
         </div>
 
         <div class="mt-8 grid grid-cols-3 gap-4">
           <div class="card rounded-2xl p-4">
-            <div class="text-sm text-ink-200">Tiempo a guardar</div>
-            <div class="mt-1 text-2xl font-semibold">&lt; 5s</div>
+            <div class="text-sm text-text3">Tiempo a guardar</div>
+            <div class="mt-1 text-2xl font-semibold text-text">&lt; 5s</div>
           </div>
           <div class="card rounded-2xl p-4">
-            <div class="text-sm text-ink-200">Offline</div>
-            <div class="mt-1 text-2xl font-semibold">Sí</div>
+            <div class="text-sm text-text3">Offline</div>
+            <div class="mt-1 text-2xl font-semibold text-text">Sí</div>
           </div>
           <div class="card rounded-2xl p-4">
-            <div class="text-sm text-ink-200">Privacidad</div>
-            <div class="mt-1 text-2xl font-semibold">Tuya</div>
+            <div class="text-sm text-text3">Privacidad</div>
+            <div class="mt-1 text-2xl font-semibold text-text">Tuya</div>
           </div>
         </div>
       </div>
@@ -112,101 +95,215 @@
       <div class="shine card rounded-3xl p-6 shadow-soft">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2">
-            <div class="h-2.5 w-2.5 rounded-full bg-white/20"></div>
-            <div class="h-2.5 w-2.5 rounded-full bg-white/20"></div>
-            <div class="h-2.5 w-2.5 rounded-full bg-white/20"></div>
+            <div class="h-2.5 w-2.5 rounded-full bg-border"></div>
+            <div class="h-2.5 w-2.5 rounded-full bg-border"></div>
+            <div class="h-2.5 w-2.5 rounded-full bg-border"></div>
           </div>
-          <div class="text-xs text-ink-300">Vault • Preview</div>
+          <div class="text-xs text-text3">Vault • Preview</div>
         </div>
 
         <div class="mt-6 grid gap-3">
           <div class="card rounded-2xl p-4">
             <div class="flex items-center justify-between">
-              <div class="text-sm font-semibold">YouTube — charla de liderazgo</div>
-              <div class="text-xs text-ink-300">Procesando…</div>
+              <div class="text-sm font-semibold text-text">YouTube — charla de liderazgo</div>
+              <div class="text-xs text-text3">Procesando…</div>
             </div>
-            <div class="mt-2 h-2 rounded-full bg-white/10 overflow-hidden">
-              <div class="h-full w-2/3 bg-brand-500/70"></div>
+            <div class="mt-2 h-2 rounded-full progress-track overflow-hidden">
+              <div class="h-full w-2/3 bg-primary-500/90"></div>
             </div>
-            <div class="mt-3 text-sm text-ink-200">Resumen, tags y puntos clave aparecerán aquí.</div>
+            <div class="mt-3 text-sm text-text2">Resumen, tags y puntos clave aparecerán aquí.</div>
           </div>
 
           <div class="grid sm:grid-cols-2 gap-3">
             <div class="card rounded-2xl p-4">
-              <div class="text-xs text-ink-300">PDF</div>
-              <div class="mt-1 font-semibold">La esencia del liderazgo</div>
-              <div class="mt-2 text-sm text-ink-200">Texto extraído + búsqueda local.</div>
+              <div class="text-xs text-text3">PDF</div>
+              <div class="mt-1 font-semibold text-text">La esencia del liderazgo</div>
+              <div class="mt-2 text-sm text-text2">Texto extraído + búsqueda local.</div>
             </div>
             <div class="card rounded-2xl p-4">
-              <div class="text-xs text-ink-300">Nota</div>
-              <div class="mt-1 font-semibold">Ideas de producto</div>
-              <div class="mt-2 text-sm text-ink-200">Captura rápida desde Share.</div>
+              <div class="text-xs text-text3">Nota</div>
+              <div class="mt-1 font-semibold text-text">Ideas de producto</div>
+              <div class="mt-2 text-sm text-text2">Captura rápida desde Share.</div>
             </div>
           </div>
 
           <div class="card rounded-2xl p-4">
-            <div class="text-xs text-ink-300">Transcripción</div>
-            <div class="mt-1 text-sm text-ink-200 leading-relaxed">
+            <div class="text-xs text-text3">Transcripción</div>
+            <div class="mt-1 text-sm text-text2 leading-relaxed">
               “La diferencia entre ruido y señal… es decisión. Lo que eliges guardar es lo que te construye.”
             </div>
             <div class="mt-3 flex gap-2">
-              <span class="text-xs px-2 py-1 rounded-full bg-white/5 stroke">Resumen</span>
-              <span class="text-xs px-2 py-1 rounded-full bg-white/5 stroke">Traducción</span>
-              <span class="text-xs px-2 py-1 rounded-full bg-white/5 stroke">Tags</span>
+              <span class="text-xs px-2 py-1 rounded-full demo-chip">Resumen</span>
+              <span class="text-xs px-2 py-1 rounded-full demo-chip">Traducción</span>
+              <span class="text-xs px-2 py-1 rounded-full demo-chip">Tags</span>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="share-magic" class="mt-16">
+      <div class="max-w-3xl">
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-text">Así se ve cuando compartes un video</h2>
+        <p class="mt-3 text-text2">El texto se queda igual. Solo lo ordenamos para que se lea increíble.</p>
+      </div>
+
+      <div class="mt-8 card rounded-[24px] p-5 sm:p-7">
+        <div class="grid lg:grid-cols-3 gap-4">
+          <article class="card rounded-2xl p-4">
+            <div class="text-xs text-primary-600 font-semibold uppercase tracking-wide">Paso 1</div>
+            <h3 class="mt-2 font-semibold text-text">Compartir</h3>
+            <p class="mt-2 text-sm text-text2">Desde Share Extension o pegando un link. También funciona con PDF.</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="demo-chip text-xs rounded-full px-2.5 py-1">YouTube</span>
+              <span class="demo-chip text-xs rounded-full px-2.5 py-1">Instagram</span>
+              <span class="demo-chip text-xs rounded-full px-2.5 py-1">PDF</span>
+            </div>
+          </article>
+
+          <article class="card rounded-2xl p-4">
+            <div class="text-xs text-primary-600 font-semibold uppercase tracking-wide">Paso 2</div>
+            <h3 class="mt-2 font-semibold text-text">Procesando</h3>
+            <p class="mt-2 text-sm text-text2">Extraemos audio, texto y descripción para prepararlo sin cambiar palabras.</p>
+            <div class="mt-3 h-2 rounded-full progress-track overflow-hidden" aria-hidden="true">
+              <div class="h-full progress-bar rounded-full"></div>
+            </div>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="demo-chip is-active text-xs rounded-full px-2.5 py-1">OCR</span>
+              <span class="demo-chip is-active text-xs rounded-full px-2.5 py-1">Transcripción</span>
+              <span class="demo-chip is-active text-xs rounded-full px-2.5 py-1">Descripción</span>
+            </div>
+          </article>
+
+          <article class="card rounded-2xl p-4">
+            <div class="text-xs text-primary-600 font-semibold uppercase tracking-wide">Paso 3</div>
+            <h3 class="mt-2 font-semibold text-text">Resultado</h3>
+            <p class="mt-2 text-sm text-text2">Mismo contenido, mejor estructura para leer, estudiar o ejecutar.</p>
+            <div class="mt-3 inline-flex items-center gap-2 rounded-full bg-success-100 text-green-700 px-3 py-1 text-xs font-medium">
+              <span class="h-1.5 w-1.5 rounded-full bg-success-600"></span>Procesado
+            </div>
+          </article>
+        </div>
+
+        <div class="mt-6 rounded-2xl border border-border bg-surface p-4 sm:p-5">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div class="flex items-center gap-2 text-sm text-text2">
+              <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-primary-100 text-primary-600">✦</span>
+              Formatted Text Demo
+            </div>
+            <div class="toggle-pill inline-flex p-1 rounded-full w-full sm:w-auto" role="tablist" aria-label="Modo de visualización">
+              <button type="button" class="toggle-option rounded-full px-3 py-1.5 text-sm font-medium" data-view="original" aria-pressed="true">Original</button>
+              <button type="button" class="toggle-option rounded-full px-3 py-1.5 text-sm font-medium" data-view="formatted" aria-pressed="false">Formateado</button>
+              <button type="button" class="toggle-option rounded-full px-3 py-1.5 text-sm font-medium" data-view="both" aria-pressed="false">Ambos</button>
+            </div>
+          </div>
+
+          <div class="mt-4 grid gap-4 lg:grid-cols-2" id="share-views">
+            <article class="share-panel rounded-2xl border border-border bg-[#fbfbfc] p-4" data-panel="original">
+              <h4 class="text-sm font-semibold text-text">Texto original (caótico)</h4>
+              <p class="mt-3 text-sm text-text2 leading-relaxed">
+                video: pasta cremosa sin horno super rápida para cena. descripción: pasta corta 320 g crema de leche 250 ml parmesano media taza ajo 2 dientes espinaca un puñado sal pimienta aceite oliva. en el audio digo: calienta sartén añade aceite y ajo cuando huela bien agrega crema parmesano sal pimienta mezcla hasta espesar añade pasta cocida y un poco de agua de cocción después incorpora espinaca 1 minuto y apaga. opcional ralladura de limón. tiempo total 18 min rinde 2 porciones.
+              </p>
+            </article>
+
+            <article class="share-panel formatted-app rounded-2xl p-4" data-panel="formatted" hidden>
+              <div class="flex items-center justify-between gap-2">
+                <h4 class="text-sm font-semibold text-text">Formatted Text</h4>
+                <span class="rounded-full bg-primary-100 text-primary-600 px-2.5 py-1 text-xs font-medium">Sin reescritura</span>
+              </div>
+
+              <div class="mt-3 text-sm text-text2 space-y-3 leading-relaxed">
+                <div>
+                  <p class="text-xs uppercase tracking-wide text-text3">Título</p>
+                  <p>pasta cremosa sin horno super rápida para cena</p>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-wide text-text3">Descripción</p>
+                  <p>video: pasta cremosa sin horno super rápida para cena.</p>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-wide text-text3">Ingredientes</p>
+                  <ul class="list-disc pl-5">
+                    <li>pasta corta 320 g</li>
+                    <li>crema de leche 250 ml</li>
+                    <li>parmesano media taza</li>
+                    <li>ajo 2 dientes</li>
+                    <li>espinaca un puñado</li>
+                    <li>sal pimienta aceite oliva</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-wide text-text3">Pasos</p>
+                  <ol class="list-decimal pl-5 space-y-1">
+                    <li>calienta sartén añade aceite y ajo</li>
+                    <li>cuando huela bien agrega crema parmesano sal pimienta mezcla hasta espesar</li>
+                    <li>añade pasta cocida y un poco de agua de cocción</li>
+                    <li>después incorpora espinaca 1 minuto y apaga</li>
+                  </ol>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-wide text-text3">Tips</p>
+                  <p>opcional ralladura de limón</p>
+                </div>
+                <div class="flex gap-3 text-xs">
+                  <span class="demo-chip rounded-full px-2.5 py-1">tiempo total 18 min</span>
+                  <span class="demo-chip rounded-full px-2.5 py-1">rinde 2 porciones</span>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
     <section id="features" class="mt-16">
-      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Features que importan (MVP sin drama)</h2>
-      <p class="mt-3 text-ink-200 max-w-2xl">Diseñado para que la API siempre responda rápido y lo pesado ocurra en background. Ideal para 3–10 usuarios mientras afinamos.</p>
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-text">Features que importan (MVP sin drama)</h2>
+      <p class="mt-3 text-text2 max-w-2xl">Diseñado para que la API siempre responda rápido y lo pesado ocurra en background. Ideal para 3–10 usuarios mientras afinamos.</p>
 
       <div class="mt-8 grid md:grid-cols-3 gap-4">
         <div class="card rounded-3xl p-6">
-          <div class="text-sm font-semibold">Ingestión universal</div>
-          <p class="mt-2 text-sm text-ink-200">Links, PDFs, imágenes, audio. Guardas primero, procesas después.</p>
+          <div class="text-sm font-semibold text-text">Ingestión universal</div>
+          <p class="mt-2 text-sm text-text2">Links, PDFs, imágenes, audio. Guardas primero, procesas después.</p>
         </div>
         <div class="card rounded-3xl p-6">
-          <div class="text-sm font-semibold">Procesamiento en background</div>
-          <p class="mt-2 text-sm text-ink-200">Celery + colas: la app no se congela aunque estés transcribiendo.</p>
+          <div class="text-sm font-semibold text-text">Procesamiento en background</div>
+          <p class="mt-2 text-sm text-text2">Celery + colas: la app no se congela aunque estés transcribiendo.</p>
         </div>
         <div class="card rounded-3xl p-6">
-          <div class="text-sm font-semibold">Offline real</div>
-          <p class="mt-2 text-sm text-ink-200">Búsqueda local, caché de contenido y sync inteligente.</p>
+          <div class="text-sm font-semibold text-text">Offline real</div>
+          <p class="mt-2 text-sm text-text2">Búsqueda local, caché de contenido y sync inteligente.</p>
         </div>
       </div>
 
       <div class="mt-4 grid md:grid-cols-2 gap-4">
         <div class="card rounded-3xl p-6">
-          <div class="text-sm font-semibold">Transcripción + resumen</div>
-          <p class="mt-2 text-sm text-ink-200">Convierte material largo en puntos accionables. Ideal para estudio y trabajo.</p>
+          <div class="text-sm font-semibold text-text">Transcripción + resumen</div>
+          <p class="mt-2 text-sm text-text2">Convierte material largo en puntos accionables. Ideal para estudio y trabajo.</p>
         </div>
         <div class="card rounded-3xl p-6">
-          <div class="text-sm font-semibold">Tu conocimiento, tu estructura</div>
-          <p class="mt-2 text-sm text-ink-200">Etiquetas, favoritos, colecciones. Sin imponer un sistema raro.</p>
+          <div class="text-sm font-semibold text-text">Tu conocimiento, tu estructura</div>
+          <p class="mt-2 text-sm text-text2">Etiquetas, favoritos, colecciones. Sin imponer un sistema raro.</p>
         </div>
       </div>
     </section>
 
     <section id="how" class="mt-16">
-      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Cómo funciona</h2>
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-text">Cómo funciona</h2>
       <div class="mt-8 grid lg:grid-cols-3 gap-4">
         <div class="card rounded-3xl p-6">
-          <div class="text-xs text-ink-300">01</div>
-          <div class="mt-2 font-semibold">Guarda</div>
-          <p class="mt-2 text-sm text-ink-200">Desde iOS/Android/Web: comparte o arrastra.</p>
+          <div class="text-xs text-text3">01</div>
+          <div class="mt-2 font-semibold text-text">Guarda</div>
+          <p class="mt-2 text-sm text-text2">Desde iOS/Android/Web: comparte o arrastra.</p>
         </div>
         <div class="card rounded-3xl p-6">
-          <div class="text-xs text-ink-300">02</div>
-          <div class="mt-2 font-semibold">Procesa</div>
-          <p class="mt-2 text-sm text-ink-200">El worker hace lo pesado: descarga, OCR, ffmpeg, transcribe.</p>
+          <div class="text-xs text-text3">02</div>
+          <div class="mt-2 font-semibold text-text">Procesa</div>
+          <p class="mt-2 text-sm text-text2">El worker hace lo pesado: descarga, OCR, ffmpeg, transcribe.</p>
         </div>
         <div class="card rounded-3xl p-6">
-          <div class="text-xs text-ink-300">03</div>
-          <div class="mt-2 font-semibold">Encuentra</div>
-          <p class="mt-2 text-sm text-ink-200">Busca por texto, tags, resumen o idioma, incluso offline.</p>
+          <div class="text-xs text-text3">03</div>
+          <div class="mt-2 font-semibold text-text">Encuentra</div>
+          <p class="mt-2 text-sm text-text2">Busca por texto, tags, resumen o idioma, incluso offline.</p>
         </div>
       </div>
     </section>
@@ -215,39 +312,39 @@
       <div class="card rounded-3xl p-8 md:p-10">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
-            <h3 class="text-2xl font-semibold tracking-tight">¿Te doy acceso?</h3>
-            <p class="mt-2 text-ink-200">Déjame tu correo. Te mando el link del TestFlight y la demo web cuando estén listos.</p>
+            <h3 class="text-2xl font-semibold tracking-tight text-text">¿Te doy acceso?</h3>
+            <p class="mt-2 text-text2">Déjame tu correo. Te mando el link del TestFlight y la demo web cuando estén listos.</p>
           </div>
           <form id="waitlist-form" class="w-full md:w-auto">
             <div class="flex flex-col sm:flex-row gap-3">
-              <input required type="email" placeholder="tu@correo.com" class="w-full sm:w-80 rounded-2xl px-4 py-3 bg-ink-800/60 stroke text-white placeholder:text-ink-400 focus:outline-none focus:ring-2 focus:ring-brand-500/60" />
-              <button class="rounded-2xl px-5 py-3 font-semibold bg-mint-400/90 hover:bg-mint-300 text-ink-900">Unirme</button>
+              <input required type="email" placeholder="tu@correo.com" class="w-full sm:w-80 rounded-2xl px-4 py-3 bg-surface stroke text-text placeholder:text-text3 focus:outline-none focus:ring-2 focus:ring-primary-500/55" />
+              <button class="rounded-2xl px-5 py-3 font-semibold bg-primary-600 hover:bg-primary-500 text-white">Unirme</button>
             </div>
-            <p id="thanks" class="mt-3 text-sm text-ink-200 hidden">Listo. Te aviso pronto. ✉️</p>
-            <p class="mt-2 text-xs text-ink-400">Sin spam. Solo lanzamientos y acceso.</p>
+            <p id="thanks" class="mt-3 text-sm text-text2 hidden">Listo. Te aviso pronto. ✉️</p>
+            <p class="mt-2 text-xs text-text3">Sin spam. Solo lanzamientos y acceso.</p>
           </form>
         </div>
       </div>
     </section>
 
     <section id="faq" class="mt-16 pb-14">
-      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">FAQ</h2>
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-text">FAQ</h2>
       <div class="mt-8 grid md:grid-cols-2 gap-4">
         <details class="card rounded-3xl p-6">
-          <summary class="cursor-pointer font-semibold">¿Esto es seguro?</summary>
-          <p class="mt-3 text-sm text-ink-200">La idea es que el contenido sea tuyo. Empezamos simple y robusto; luego añadimos cifrado por archivo y opciones avanzadas.</p>
+          <summary class="cursor-pointer font-semibold text-text">¿Esto es seguro?</summary>
+          <p class="mt-3 text-sm text-text2">La idea es que el contenido sea tuyo. Empezamos simple y robusto; luego añadimos cifrado por archivo y opciones avanzadas.</p>
         </details>
         <details class="card rounded-3xl p-6">
-          <summary class="cursor-pointer font-semibold">¿Funciona offline?</summary>
-          <p class="mt-3 text-sm text-ink-200">Sí: cache local + búsqueda local. El sync se encarga cuando vuelve el internet.</p>
+          <summary class="cursor-pointer font-semibold text-text">¿Funciona offline?</summary>
+          <p class="mt-3 text-sm text-text2">Sí: cache local + búsqueda local. El sync se encarga cuando vuelve el internet.</p>
         </details>
         <details class="card rounded-3xl p-6">
-          <summary class="cursor-pointer font-semibold">¿Qué tan rápido es?</summary>
-          <p class="mt-3 text-sm text-ink-200">La API responde rápido porque solo encola trabajos. El worker procesa y actualiza el estado.</p>
+          <summary class="cursor-pointer font-semibold text-text">¿Qué tan rápido es?</summary>
+          <p class="mt-3 text-sm text-text2">La API responde rápido porque solo encola trabajos. El worker procesa y actualiza el estado.</p>
         </details>
         <details class="card rounded-3xl p-6">
-          <summary class="cursor-pointer font-semibold">¿Cuándo sale?</summary>
-          <p class="mt-3 text-sm text-ink-200">MVP primero. Luego iteramos con usuarios reales (como debe ser).</p>
+          <summary class="cursor-pointer font-semibold text-text">¿Cuándo sale?</summary>
+          <p class="mt-3 text-sm text-text2">MVP primero. Luego iteramos con usuarios reales (como debe ser).</p>
         </details>
       </div>
     </section>

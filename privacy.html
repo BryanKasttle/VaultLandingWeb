@@ -12,25 +12,22 @@
         theme: {
           extend: {
             colors: {
-              ink: {
-                50: '#f7f7f8', 100: '#ececee', 200: '#d6d6db', 300: '#b3b3bc', 400: '#8c8c99',
-                500: '#6b6b78', 600: '#4f4f5a', 700: '#3a3a44', 800: '#25252d', 900: '#131318'
-              },
-              brand: {
-                50: '#eef7ff', 100: '#d9eeff', 200: '#b5ddff', 300: '#86c5ff', 400: '#57a8ff',
-                500: '#2e8bff', 600: '#1e6fe6', 700: '#1858b8', 800: '#12408a', 900: '#0c2a5c'
-              },
-              mint: {
-                50: '#ecfff7', 100: '#d6ffef', 200: '#adffe0', 300: '#74ffd0', 400: '#2ff2b7',
-                500: '#12d49b', 600: '#0fae7f', 700: '#0c8a64', 800: '#086147', 900: '#043b2b'
-              }
+              vaultbg: '#F7F8FA',
+              surface: '#FFFFFF',
+              border: '#E6E8EC',
+              text: '#111827',
+              text2: '#374151',
+              text3: '#6B7280',
+              primary: { 100: '#E9EEFF', 500: '#4F7CFF', 600: '#3B4BFF' },
+              violet: { 100: '#F3E8FF', 600: '#7C3AED' },
+              success: { 100: '#DCFCE7', 600: '#22C55E' }
             },
             fontFamily: {
               sans: ["ui-sans-serif", "system-ui", "-apple-system", "SF Pro Display", "SF Pro Text", "Inter", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"]
             },
             boxShadow: {
-              soft: '0 10px 30px rgba(0,0,0,.12)',
-              glow: '0 0 0 1px rgba(46,139,255,.20), 0 25px 60px rgba(46,139,255,.18)'
+              soft: '0 10px 30px rgba(17,24,39,.07)',
+              glow: '0 0 0 1px rgba(59,75,255,.20), 0 16px 40px rgba(59,75,255,.14)'
             }
           }
         }
@@ -42,24 +39,24 @@
   <link rel="stylesheet" href="/css/styles.css" />
   <script src="/js/main.js" defer></script>
 </head>
-<body data-page="legal" class="bg-ink-900 text-ink-50 selection:bg-brand-500/30 selection:text-white">
+<body data-page="legal" class="bg-vaultbg text-text selection:bg-primary-100 selection:text-text">
   <div class="fixed inset-0 -z-10 noise"></div>
-  <div class="fixed inset-0 -z-10 gridlines opacity-40"></div>
+  <div class="fixed inset-0 -z-10 gridlines opacity-70"></div>
 
   <div id="site-header"></div>
 
   <main class="mx-auto max-w-4xl px-6 pt-14 pb-16">
     <section class="card rounded-3xl p-8 md:p-10">
-      <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight">Privacy</h1>
-      <p class="mt-6 text-ink-200">En Vault respetamos tu privacidad. Esta página describe cómo tratamos la información cuando usas la landing y te unes a la waitlist.</p>
-      <h2 class="mt-8 text-xl font-semibold">Información que recopilamos</h2>
-      <p class="mt-2 text-ink-200">Recopilamos el correo electrónico que envías voluntariamente en el formulario para avisarte sobre lanzamientos y acceso.</p>
-      <h2 class="mt-8 text-xl font-semibold">Uso de la información</h2>
-      <p class="mt-2 text-ink-200">Utilizamos el correo únicamente para comunicación del producto. No vendemos ni compartimos datos personales con terceros para marketing.</p>
-      <h2 class="mt-8 text-xl font-semibold">Conservación y seguridad</h2>
-      <p class="mt-2 text-ink-200">Aplicamos medidas razonables para proteger los datos y conservamos la información solo el tiempo necesario para los fines informados.</p>
-      <h2 class="mt-8 text-xl font-semibold">Contacto</h2>
-      <p class="mt-2 text-ink-200">Para consultas sobre privacidad, contáctanos en: privacy@vault.example.</p>
+      <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-text">Privacy</h1>
+      <p class="mt-6 text-text2">En Vault respetamos tu privacidad. Esta página describe cómo tratamos la información cuando usas la landing y te unes a la waitlist.</p>
+      <h2 class="mt-8 text-xl font-semibold text-text">Información que recopilamos</h2>
+      <p class="mt-2 text-text2">Recopilamos el correo electrónico que envías voluntariamente en el formulario para avisarte sobre lanzamientos y acceso.</p>
+      <h2 class="mt-8 text-xl font-semibold text-text">Uso de la información</h2>
+      <p class="mt-2 text-text2">Utilizamos el correo únicamente para comunicación del producto. No vendemos ni compartimos datos personales con terceros para marketing.</p>
+      <h2 class="mt-8 text-xl font-semibold text-text">Conservación y seguridad</h2>
+      <p class="mt-2 text-text2">Aplicamos medidas razonables para proteger los datos y conservamos la información solo el tiempo necesario para los fines informados.</p>
+      <h2 class="mt-8 text-xl font-semibold text-text">Contacto</h2>
+      <p class="mt-2 text-text2">Para consultas sobre privacidad, contáctanos en: privacy@vault.example.</p>
     </section>
   </main>
 
