@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms — Vault</title>
+  <meta name="description" content="Términos y condiciones de Vault." />
+
+  <script>
+    tailwind = {
+      config: {
+        theme: {
+          extend: {
+            colors: {
+              ink: {
+                50: '#f7f7f8', 100: '#ececee', 200: '#d6d6db', 300: '#b3b3bc', 400: '#8c8c99',
+                500: '#6b6b78', 600: '#4f4f5a', 700: '#3a3a44', 800: '#25252d', 900: '#131318'
+              },
+              brand: {
+                50: '#eef7ff', 100: '#d9eeff', 200: '#b5ddff', 300: '#86c5ff', 400: '#57a8ff',
+                500: '#2e8bff', 600: '#1e6fe6', 700: '#1858b8', 800: '#12408a', 900: '#0c2a5c'
+              },
+              mint: {
+                50: '#ecfff7', 100: '#d6ffef', 200: '#adffe0', 300: '#74ffd0', 400: '#2ff2b7',
+                500: '#12d49b', 600: '#0fae7f', 700: '#0c8a64', 800: '#086147', 900: '#043b2b'
+              }
+            },
+            fontFamily: {
+              sans: ["ui-sans-serif", "system-ui", "-apple-system", "SF Pro Display", "SF Pro Text", "Inter", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"]
+            },
+            boxShadow: {
+              soft: '0 10px 30px rgba(0,0,0,.12)',
+              glow: '0 0 0 1px rgba(46,139,255,.20), 0 25px 60px rgba(46,139,255,.18)'
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script src="/js/main.js" defer></script>
+</head>
+<body data-page="legal" class="bg-ink-900 text-ink-50 selection:bg-brand-500/30 selection:text-white">
+  <div class="fixed inset-0 -z-10 noise"></div>
+  <div class="fixed inset-0 -z-10 gridlines opacity-40"></div>
+
+  <div id="site-header"></div>
+
+  <main class="mx-auto max-w-4xl px-6 pt-14 pb-16">
+    <section class="card rounded-3xl p-8 md:p-10">
+      <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight">Terms</h1>
+      <p class="mt-6 text-ink-200">Al usar este sitio aceptas estos términos. Si no estás de acuerdo, por favor no uses la landing ni envíes datos en la waitlist.</p>
+      <h2 class="mt-8 text-xl font-semibold">Uso del sitio</h2>
+      <p class="mt-2 text-ink-200">El contenido se ofrece con fines informativos sobre el producto Vault. Podemos actualizar información, funcionalidades y disponibilidad sin aviso previo.</p>
+      <h2 class="mt-8 text-xl font-semibold">Waitlist</h2>
+      <p class="mt-2 text-ink-200">Registrarte en la waitlist no garantiza acceso inmediato ni compromiso comercial. Es una solicitud para recibir novedades y posible acceso anticipado.</p>
+      <h2 class="mt-8 text-xl font-semibold">Limitación de responsabilidad</h2>
+      <p class="mt-2 text-ink-200">El sitio se proporciona “tal cual”. En la medida permitida por ley, no asumimos responsabilidad por daños derivados del uso de esta web.</p>
+      <h2 class="mt-8 text-xl font-semibold">Contacto</h2>
+      <p class="mt-2 text-ink-200">Para consultas legales, contáctanos en: legal@vault.example.</p>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>
