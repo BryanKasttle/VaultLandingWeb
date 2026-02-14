@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "45R8UL4W5Q.Well.TranscriptorIA",
+        "paths": [
+          "/verify*",
+          "/email-verified*",
+          "/open*"
+        ]
+      }
+    ]
+  }
+}
