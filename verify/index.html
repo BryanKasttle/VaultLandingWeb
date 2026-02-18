@@ -6,97 +6,271 @@
     <title>Verificación de correo | Vault</title>
     <style>
       :root {
-        color-scheme: light dark;
-        font-family: Arial, Helvetica, sans-serif;
+        color-scheme: dark;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         min-height: 100vh;
         display: grid;
         place-items: center;
-        background: #0f172a;
+        padding: 24px;
+        background:
+          radial-gradient(circle at top, rgba(37, 99, 235, 0.25), transparent 45%),
+          #020617;
         color: #e2e8f0;
       }
+
       main {
-        width: min(560px, 92vw);
-        background: #111827;
-        border: 1px solid #334155;
-        border-radius: 12px;
+        width: min(620px, 100%);
+        border-radius: 16px;
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        background: rgba(15, 23, 42, 0.9);
+        box-shadow: 0 20px 60px rgba(2, 6, 23, 0.5);
         padding: 28px;
-        box-sizing: border-box;
       }
+
+      .brand {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #60a5fa;
+        margin-bottom: 10px;
+      }
+
       h1 {
-        margin-top: 0;
-        font-size: 1.4rem;
+        margin: 0;
+        font-size: 1.65rem;
+        font-weight: 700;
       }
-      p {
-        color: #cbd5e1;
-      }
-      .actions {
-        display: flex;
-        gap: 12px;
-        margin-top: 18px;
-        flex-wrap: wrap;
-      }
-      a {
+
+      .status-pill {
         display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        border-radius: 8px;
-        padding: 10px 14px;
+        margin-top: 16px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 0.78rem;
         font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
       }
-      a.primary {
-        background: #2563eb;
-        color: white;
+
+      .status-loading {
+        background: rgba(59, 130, 246, 0.22);
+        color: #93c5fd;
       }
-      a.secondary {
-        background: transparent;
-        border: 1px solid #64748b;
+
+      .status-success {
+        background: rgba(22, 163, 74, 0.22);
+        color: #86efac;
+      }
+
+      .status-error {
+        background: rgba(239, 68, 68, 0.18);
+        color: #fca5a5;
+      }
+
+      #message {
+        margin: 14px 0 0;
+        color: #cbd5e1;
+        line-height: 1.55;
+      }
+
+      #details {
+        margin-top: 16px;
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        background: rgba(15, 23, 42, 0.8);
+        border-radius: 10px;
+        padding: 14px;
         color: #e2e8f0;
+        white-space: pre-wrap;
+        word-break: break-word;
       }
-      a[aria-disabled="true"] {
-        opacity: 0.5;
-        pointer-events: none;
+
+      .actions {
+        margin-top: 24px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .btn {
+        border: none;
+        border-radius: 10px;
+        padding: 11px 16px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .btn-primary {
+        background: #2563eb;
+        color: #ffffff;
+      }
+
+      .btn-secondary {
+        background: rgba(15, 23, 42, 0.85);
+        border: 1px solid rgba(148, 163, 184, 0.5);
+        color: #e2e8f0;
       }
     </style>
   </head>
   <body>
     <main>
+      <div class="brand">Vault</div>
       <h1>Verificación de correo</h1>
-      <p id="status">Verificando tu correo...</p>
+      <span id="state" class="status-pill status-loading">Verificando</span>
+      <p id="message">Estamos validando tu token de verificación.</p>
+      <div id="details" hidden></div>
+
       <div class="actions">
-        <a id="continueLink" class="primary" href="#">Continuar</a>
-        <a
-          id="openVaultLink"
-          class="secondary"
-          href="vault://email-verified?status=ok"
-          >Abrir Vault</a
-        >
+        <a id="loginBtn" class="btn btn-primary" href="https://app.vaultop.me/login">Go to Login</a>
+        <button id="retryBtn" class="btn btn-secondary" type="button" hidden>Reintentar</button>
       </div>
     </main>
 
     <script>
       (function () {
-        const statusText = document.getElementById('status');
-        const continueLink = document.getElementById('continueLink');
-        const params = new URLSearchParams(window.location.search);
-        const token = params.get('token');
+        const API_BASE_URL = 'https://api.vaultop.me';
+        const LOGIN_URL = 'https://app.vaultop.me/login';
 
-        if (!token) {
-          statusText.textContent = 'Token faltante';
-          continueLink.href = '#';
-          continueLink.setAttribute('aria-disabled', 'true');
-          return;
-        }
+        const stateEl = document.getElementById('state');
+        const messageEl = document.getElementById('message');
+        const detailsEl = document.getElementById('details');
+        const retryBtn = document.getElementById('retryBtn');
+        const loginBtn = document.getElementById('loginBtn');
+        loginBtn.href = LOGIN_URL;
 
-        const verifyUrl = `https://api.vaultop.me/verify?token=${encodeURIComponent(token)}`;
-        continueLink.href = verifyUrl;
-        continueLink.setAttribute('aria-disabled', 'false');
+        const states = {
+          loading: {
+            label: 'Verificando',
+            className: 'status-pill status-loading',
+          },
+          success: {
+            label: 'Verificado',
+            className: 'status-pill status-success',
+          },
+          expired: {
+            label: 'Token expirado',
+            className: 'status-pill status-error',
+          },
+          invalid: {
+            label: 'Token inválido',
+            className: 'status-pill status-error',
+          },
+          missing: {
+            label: 'Token faltante',
+            className: 'status-pill status-error',
+          },
+          network: {
+            label: 'Error de red',
+            className: 'status-pill status-error',
+          },
+          error: {
+            label: 'Error',
+            className: 'status-pill status-error',
+          },
+        };
 
-        // Intento automático de redirección
-        window.location.replace(verifyUrl);
+        const setState = (stateKey, message, details) => {
+          const config = states[stateKey] || states.error;
+          stateEl.textContent = config.label;
+          stateEl.className = config.className;
+          messageEl.textContent = message;
+
+          if (details) {
+            detailsEl.hidden = false;
+            detailsEl.innerHTML = details;
+          } else {
+            detailsEl.hidden = true;
+            detailsEl.textContent = '';
+          }
+
+          retryBtn.hidden = stateKey !== 'network';
+        };
+
+        const classifyErrorState = (text) => {
+          const normalized = String(text || '').toLowerCase();
+          if (normalized.includes('expired') || normalized.includes('expirad')) {
+            return 'expired';
+          }
+          if (normalized.includes('invalid') || normalized.includes('inválid') || normalized.includes('inval')) {
+            return 'invalid';
+          }
+          return 'error';
+        };
+
+        const verifyEmail = async () => {
+          const params = new URLSearchParams(window.location.search);
+          const token = params.get('token');
+
+          if (!token) {
+            setState('missing', 'El enlace no contiene token de verificación. Solicita un nuevo correo.');
+            return;
+          }
+
+          setState('loading', 'Estamos verificando tu correo. Esto puede tardar unos segundos.');
+
+          try {
+            const encodedToken = encodeURIComponent(token);
+            const response = await fetch(`${API_BASE_URL}/auth/verify-email?token=${encodedToken}`, {
+              method: 'GET',
+              headers: {
+                Accept: 'text/html,application/json',
+              },
+            });
+
+            const contentType = response.headers.get('content-type') || '';
+
+            if (contentType.includes('text/html')) {
+              const html = await response.text();
+              if (response.ok) {
+                setState('success', 'Tu correo fue verificado correctamente.', html);
+              } else {
+                setState(classifyErrorState(html), 'No pudimos verificar tu correo.', html);
+              }
+              return;
+            }
+
+            if (contentType.includes('application/json')) {
+              const data = await response.json();
+              const rawMessage = data.message || data.error || 'No pudimos verificar tu correo.';
+
+              if (response.ok) {
+                setState('success', rawMessage);
+              } else {
+                setState(
+                  classifyErrorState(rawMessage),
+                  rawMessage,
+                  `<code>${JSON.stringify(data, null, 2)}</code>`
+                );
+              }
+              return;
+            }
+
+            const fallbackBody = await response.text();
+            if (response.ok) {
+              setState('success', 'Tu correo fue verificado correctamente.', fallbackBody || undefined);
+            } else {
+              setState('error', 'No pudimos verificar tu correo.', fallbackBody || undefined);
+            }
+          } catch (error) {
+            setState(
+              'network',
+              'No pudimos conectar con el servicio de verificación. Revisa tu conexión e inténtalo nuevamente.',
+              error && error.message ? `<code>${error.message}</code>` : undefined
+            );
+          }
+        };
+
+        retryBtn.addEventListener('click', verifyEmail);
+        verifyEmail();
       })();
     </script>
   </body>
